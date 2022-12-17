@@ -74,7 +74,8 @@ ORDER BY COUNT(*) DESC LIMIT 1;
 SELECT vets.name, animals.name, visit_date FROM visits INNER JOIN animals ON animals.id = visits.animals_id INNER JOIN vets ON vets.id = vets_id WHERE visit_date = (SELECT MAX(visit_date) FROM visits where vets_id= 1);
 
 
-SELECT COUNT(animals_id) FROM visits WHERE vets_id= 3;
+SELECT COUNT (*) FROM vets INNER JOIN visits ON vets.id = visits.vets_id WHERE vets.name = 'Stephanie Mendez' GROUP BY vets.name;
+
 
 SELECT vets.name, species.name FROM vets LEFT JOIN specializations ON vets.id = specializations.vets_id LEFT JOIN species ON species.id = species_id;
 
