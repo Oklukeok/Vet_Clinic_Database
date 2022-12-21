@@ -32,3 +32,15 @@ CREATE INDEX animal_id_index ON visits(animal_id);
 CREATE INDEX vet_id_index ON visits(vet_id);
 
 CREATE INDEX owner_id_index ON owners(email);
+
+/* PROJECT 6 */
+
+CREATE TABLE medical_histories_treatments(medical_history_id INT,treatment_id INT, CONSTRAINT HIST_TREAT FOREIGN KEY(medical_history_id ) REFERENCES medical_histories(id), CONSTRAINT treat_hist FOREIGN KEY (treatment_id) REFERENCES treatments(id));
+
+CREATE INDEX ON medical_histories(patient_id);
+CREATE INDEX ON invoices(medical_history_id);
+CREATE INDEX ON invoice_items (treatment_id);
+CREATE INDEX ON invoice_items (id);
+CREATE INDEX ON medical_histories_treatments (medical_history_id);
+CREATE INDEX ON medical_histories_treatments (treatment_id);
+
