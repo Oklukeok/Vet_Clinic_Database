@@ -26,3 +26,9 @@ CREATE TABLE visits (animals_id INTEGER NOT NULL, vets_id INTEGER NOT NULL, visi
 /* PROJECT 5 */
 
 ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+CREATE INDEX animal_id_index ON visits(animal_id);
+
+CREATE INDEX vet_id_index ON visits(vet_id);
+
+CREATE INDEX owner_id_index ON owners(email);
