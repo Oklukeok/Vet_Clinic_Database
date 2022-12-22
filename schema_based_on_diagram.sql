@@ -16,3 +16,13 @@ type VARCHAR(100), name VARCHAR(100));
 CREATE TABLE invoice_items (id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY, unit_price DECIMAL, quantity INT, total_price DECIMAL, invoice_id INT, treatment_id INT, CONSTRAINT invoice_item FOREIGN KEY (treatment_id) REFERENCES treatments (id));
 
 ALTER TABLE invoice_items ADD CONSTRAINT fk_invoice_id FOREIGN KEY (invoice_id) REFERENCES invoices (id);
+
+CREATE TABLE medical_histories_treatments(medical_history_id INT,treatment_id INT, CONSTRAINT HIST_TREAT FOREIGN KEY(medical_history_id ) REFERENCES medical_histories(id), CONSTRAINT treat_hist FOREIGN KEY (treatment_id) REFERENCES treatments(id));
+
+CREATE INDEX ON medical_histories(patient_id);
+CREATE INDEX ON invoices(medical_history_id);
+CREATE INDEX ON invoice_items (treatment_id);
+CREATE INDEX ON invoice_items (id);
+CREATE INDEX ON medical_histories_treatments (medical_history_id);
+CREATE INDEX ON medical_histories_treatments (treatment_id);
+
